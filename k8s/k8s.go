@@ -1107,6 +1107,7 @@ func (k *k8sOps) ValidateDeployment(deployment *apps_api.Deployment, timeout, re
 			}
 		}
 
+		dep, _ = k.GetDeployment(deployment.Name, deployment.Namespace)
 		pods, err := k.GetDeploymentPods(deployment)
 		if err != nil || pods == nil {
 			return "", true, &ErrAppNotReady{
